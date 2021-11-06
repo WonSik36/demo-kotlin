@@ -2,6 +2,10 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.5.31'
 }
 
+ext {
+    set 'kotestVersion', '4.6.0'
+}
+
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -11,4 +15,14 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    testImplementation "io.kotest:kotest-runner-junit5:$kotestVersion"
+    testImplementation "io.kotest:kotest-runner-junit5-jvm:$kotestVersion"
+    testImplementation "io.kotest:kotest-assertions-core:$kotestVersion"
+    testImplementation "io.kotest:kotest-assertions-core-jvm:$kotestVersion"
+    testImplementation "io.kotest:kotest-property:$kotestVersion"
+}
+
+test {
+    useJUnitPlatform()
 }
