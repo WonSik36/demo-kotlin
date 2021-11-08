@@ -26,6 +26,12 @@ fun max4(a: Int, b: Int) : Int = if (a > b) a else b
 
 fun max5(a: Int, b: Int) = if (a > b) a else b
 
+fun max6(a: Int, b: Int) =
+    if (a > b)
+        a
+    else
+        b
+
 fun assignmentIsStatement() {
     var x = 1
     var y = 2
