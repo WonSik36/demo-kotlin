@@ -4,7 +4,7 @@ import java.io.BufferedReader
 import java.lang.IllegalArgumentException
 
 fun percentage(number: Int) =
-    if (number in (1..100) as Iterable<Int>)
+    if (number in (0..100) as Iterable<Int>)
         number
     else
         throw IllegalArgumentException("퍼센트는 0 과 100 사이의 수여야 한다.: $number")
