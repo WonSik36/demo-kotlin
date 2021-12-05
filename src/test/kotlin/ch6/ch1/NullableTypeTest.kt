@@ -32,5 +32,23 @@ class NullableTypeTest: FreeSpec() {
                 len shouldBe 3
             }
         }
+
+        "shippingLabel 테스트" - {
+            "null 이 아닌 경우" {
+                val address = Address("Elsestr. 47", 80687, "Munich", "Germany")
+                val jetbrains = Company("Jetbrains", address)
+                val person = Person("Dmitry", jetbrains)
+
+                val label = shippingLabel(person)
+                label shouldContain "Germany"
+            }
+
+            "null 인 경우" {
+                val person = Person("Alice", null)
+
+                val ex = shouldThrow<IllegalArgumentException> { shippingLabel(person) }
+                ex.message shouldBe "No Address"
+            }
+        }
     }
 }
