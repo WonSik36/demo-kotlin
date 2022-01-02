@@ -17,12 +17,14 @@ fun main(args: Array<String>) {
     typesafeMap.put(object: TypeReference<List<String>>(){}, listOf("alice", "bob", "chris"))
     typesafeMap.put(object: TypeReference<Map<String, List<String>>>(){}, mapOf("alice" to emptyList(), "bob" to listOf("alice", "bob", "chris")))
 
-    println(typesafeMap.get(object: TypeReference<Int>(){}))
-    println(typesafeMap.get(object: TypeReference<String>(){}))
-    println(typesafeMap.get(object: TypeReference<List<Int>>(){}))
-    println(typesafeMap.get(object: TypeReference<List<String>>(){}))
-    println(typesafeMap.get(object: TypeReference<Map<String, List<String>>>(){}))
+    println(typesafeMap.get(typeReference<Int>()))
+    println(typesafeMap.get(typeReference<String>()))
+    println(typesafeMap.get(typeReference<List<Int>>()))
+    println(typesafeMap.get(typeReference<List<String>>()))
+    println(typesafeMap.get(typeReference<Map<String, List<String>>>()))
 }
+
+inline fun <reified T: Any> typeReference() = object: TypeReference<T>(){}
 
 class TypesafeMap(private val map: MutableMap<TypeReference<*>, Any> = HashMap()) {
     fun <T: Any> put(tr: TypeReference<T>, value: T) {
