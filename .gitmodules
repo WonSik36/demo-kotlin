@@ -1,3 +1,4 @@
 [submodule "jkid"]
 	path = jkid
 	url = https://github.com/WonSik36/jkid
+	branch = develop
